@@ -1,6 +1,6 @@
 # NavRaksha – Smart Safety for Tourists
 
-Live demo: **[https://<YOUR_VERCEL_URL>](nav-raksha-web2.vercel.app)**
+Live demo: **(nav-raksha-web2.vercel.app)**
 
 NavRaksha is a prototype built for **Smart India Hackathon 2025** to keep tourists safe using a digital tourist ID, GPS tracking, SOS alerts and AI-based anomaly detection.
 
