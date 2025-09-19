@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NavRaksha - Profile</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="profile-container">
+  <h2>User Profile</h2>
+  <form id="profileForm">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="number" id="age" placeholder="Age" required>
+    <input type="text" id="bloodGroup" placeholder="Blood Group" required>
+    <input type="text" id="phone" placeholder="Phone Number" required>
+    <input type="email" id="email" placeholder="Email ID" required>
+    <input type="text" id="emergencyNumber" placeholder="Emergency Number" required>
+    <input type="text" id="location" placeholder="Location" required>
+    <button type="submit" class="btn">Save Profile</button>
+  </form>
+  <button id="logoutBtn" class="btn">Logout</button>
+</div>
+
+<script>
+  // Redirect to login if not logged in
+  if(localStorage.getItem('loggedIn') !== 'true'){
+    alert('Please login first!');
+    window.location.href = 'login.html';
+  }
+
+  const storedUser = JSON.parse(localStorage.getItem('userData'));
+  if(storedUser){
+    document.getElementById('name').value = storedUser.name;
+    document.getElementById('age').value = storedUser.age;
+    document.getElementById('bloodGroup').value = storedUser.bloodGroup;
+    document.getElementById('phone').value = storedUser.phone;
+    document.getElementById('email').value = storedUser.email;
+    document.getElementById('emergencyNumber').value = storedUser.emergencyNumber;
+    document.getElementById('location').value = storedUser.location;
+  }
+
+  document.getElementById('profileForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const userData = {
+      name: document.getElementById('name').value,
+      age: document.getElementById('age').value,
+      bloodGroup: document.getElementById('bloodGroup').value,
+      phone: document.getElementById('phone').value,
+      email: document.getElementById('email').value,
+      emergencyNumber: document.getElementById('emergencyNumber').value,
+      location: document.getElementById('location').value
+    };
+    localStorage.setItem('userData', JSON.stringify(userData));
+    alert('Profile updated!');
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem('loggedIn');
+    alert('Logged out!');
+    window.location.href = 'login.html';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NavRaksha - Sign Up</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="auth-container">
+  <h2>Sign Up</h2>
+  <form id="signupForm">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="number" id="age" placeholder="Age" required>
+    <input type="text" id="bloodGroup" placeholder="Blood Group" required>
+    <input type="text" id="phone" placeholder="Phone Number" required>
+    <input type="email" id="email" placeholder="Email ID" required>
+    <input type="text" id="emergencyNumber" placeholder="Emergency Number" required>
+    <input type="text" id="location" placeholder="Location" required>
+    <button type="submit" class="btn">Sign Up</button>
+  </form>
+  <p>Already have an account? <a href="login.html">Login here</a></p>
+</div>
+
+<script>
+  const signupForm = document.getElementById('signupForm');
+  signupForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const userData = {
+      name: document.getElementById('name').value,
+      age: document.getElementById('age').value,
+      bloodGroup: document.getElementById('bloodGroup').value,
+      phone: document.getElementById('phone').value,
+      email: document.getElementById('email').value,
+      emergencyNumber: document.getElementById('emergencyNumber').value,
+      location: document.getElementById('location').value
+    };
+    localStorage.setItem('userData', JSON.stringify(userData));
+    alert('Sign-up successful! Please login.');
+    window.location.href = 'login.html';
+  });
+</script>
+</body>
+</html>
